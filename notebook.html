@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <!-- As of 2019-03-20, my custom version of jsPDF is needed for the embedPage() function -->
+    <script src="https://risacher.org/ref/jspdf-fork/jsPDF/dist/jspdf.debug.js"></script>
+    <script src="https://unpkg.com/jspdf-autotable@3.0.10/dist/jspdf.plugin.autotable.js"></script>
+    <title> Wekan-pdf-test </title>
+  </head>
+  <body>
+    <h2> Wekan Print Prototype </h2>
+    <p> This page generates PDF from Wekan boards in a 8.5 x 4.5 (inch) format to print on US Letter paper, 2 per page.  It only prints the card titles and groups lists by color.  (Lists with no assigned color are not printed.)</p>
+    <form id="fLogin">
+      
+      <div> Please provide username and password to Wekan below:</div>
+      <table>
+        <tr><td><label for="username">Username</label></td><td> <input type="text" id="username"/></td></tr>
+        <tr><td><label for="password">Password</label></td><td> <input type="password" id="password"/></td></tr>
+        <tr><td span=2><input type="submit" id="loginsubmit"/></td></tr>
+      </table>
+    </form>
+    <form id="board-select-form">
+      <p>Select the Wekan Board of interest:</p>
+      <select id="board-select">
+        <option value="none">Not yet loaded</option>
+      </select>
+    </form>
+         
+    <div id="log">
+    </div>
+    <div id="wrapper" style="overflow:hidden;display:inline-block;box-sizing:border-box;">
+      <!-- The trick for inline PDF in Firefox is setting the height -->
+      <object style="float:none;display:inline;height:900px;width:800px;" id="target" type="application/pdf">
+      <p>Either you don't have PDF support in this web browser or the data isn't loaded yet. <a href="#" id="download-link">Click here to download the PDF</a>.</p>
+    </object>
+    </div>
+  </body>
+  <script src="notebook.js"> </script>
+ </html>
+  
