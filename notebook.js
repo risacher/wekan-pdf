@@ -18,9 +18,14 @@ function fetchBoards(id, token) {
     .then((response) => { return response.json(); })
     .then((rBoards) => {
       document.rBoards = rBoards;
-      //document.getElementById('log').innerHTML += '<br/>'+JSON.stringify(rBoards);
-      document.getElementById('board-select').innerHTML = 
-        rBoards.map((e,i,a) => { return "<option value=\""+e._id+"\">"+e.title+"</option>"}).join("");
+      var s = document.getElementById('board-select');
+      s.innerHTML = "";
+      rBoards.forEach((e,i,a) => {
+        let o = document.createElement('option');
+        o.setAttribute('value', e._id);
+        o.appendChild(document.createTextNode(e.title));
+        s.appendChild(o);
+      });
     })
 }
 
